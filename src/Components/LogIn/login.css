@@ -1,0 +1,15 @@
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: white;
+    width: 400px;
+    height: 500px;
+    border-radius: 5px;
+}
+.login__cancel{
+    position: relative;
+    bottom: 0;
+    right: 0;
+}

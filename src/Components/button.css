@@ -1,0 +1,14 @@
+.write{
+    background: var(--primary);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin: 0 10px;
+    min-width: 100px;
+}
+
+.write:active{
+    background: var(--primaryVarian);
+}
