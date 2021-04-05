@@ -3,10 +3,12 @@ import Input from "./Components/Input";
 import Button from "./Components/Button";
 import Modal from "./Components/Modal/Modal";
 import Login from "./Components/LogIn/Login";
+import Question from "./Components/Question/Question";
 
 
 const App = () => {
   const [loginModal, setLogInModal ] = useState(false);
+  const [qustionModal, setQuestionModal ] = useState(false);
   const [session, setSession] = useState(JSON.parse(localStorage.getItem("user")) || null );
 
   useEffect(() => {
@@ -23,8 +25,8 @@ const App = () => {
     console.log("asnwer btn clicked")
   }
 
-  const askNewQuestion = () => {
-    console.log("ask new question click");
+  const onNewQuestionClick = () => {
+    setQuestionModal(true)
   }
 
   const handleUserLogIn = () => {
@@ -45,7 +47,7 @@ const App = () => {
         <Button
           name="Ask"
           type="write"
-          handleButtonClick={askNewQuestion}
+          handleButtonClick={onNewQuestionClick}
         />
 
         <Button
@@ -72,6 +74,7 @@ const App = () => {
     </div>
 
     {loginModal&&<Modal cancelModal={ () => setLogInModal(false)}><Login onUserLogIn={handleUserLogIn} /></Modal>}
+    {qustionModal&&<Modal cancelModal={ () => setQuestionModal(false)}><Question /></Modal>}
   </div>
 }
 
