@@ -3,7 +3,7 @@ import Input from "./Components/Input";
 import Button from "./Components/Button";
 import Modal from "./Components/Modal/Modal";
 import Login from "./Components/LogIn/Login";
-import "./app.css";
+
 
 const App = () => {
   const [loginModal, setLogInModal ] = useState(false);
