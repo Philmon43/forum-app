@@ -13,13 +13,10 @@
     color: var(--primary);
 }
 
-.main__body{
+.main{
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
     width: 80%;
     margin: 0 auto;
     margin-top: 20px;
-}
-.main__body>div:nth-child(odd){
-    background: red;
 }

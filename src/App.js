@@ -5,32 +5,41 @@ import Modal from "./Components/Modal/Modal";
 import Login from "./Components/LogIn/Login";
 import "./app.css";
 
-const App = (props) => {
-
-  const [modal, setModal] = useState(null)
+const App = () => {
+  const [loginModal, setLogInModal ] = useState(false);
+  const [session, setSession] = useState(JSON.parse(localStorage.getItem("user")) || null );
 
   const onLogInClick = () => {
-    setModal(<Login />)
+    setLogInModal(true)
   }
 
   const onAnswerBtnClick = () => {
     console.log("asnwer btn clicked")
   }
 
-  const onAsNewQuestionClick = () => {
-    console.log("ask new question click")
+  const askNewQuestion = () => {
+    console.log("ask new question click");
+  }
+
+  const handleUserLogIn = () => {
+    setLogInModal(false);
+    setSession(JSON.parse(localStorage.getItem("user")))
   }
   
+  const onProfileClick = () => {
+    console.log("user")
+  }
+
   return <div>
     <div className="header">
       <div className="title">Forum</div>
 
-      <Input name="search" placeholder="Search " tooltip=" 🔍 " />
+      <Input data={val => val} name="search" placeholder="Search " tooltip=" 🔍 " />
       <div className="ask__ans">
         <Button
           name="Ask"
           type="write"
-          handleButtonClick={onAsNewQuestionClick}
+          handleButtonClick={askNewQuestion}
         />
 
         <Button
@@ -40,22 +49,23 @@ const App = (props) => {
         />
       </div>
 
-      <Button
-        name="LogIn"
-        type="LogIn"
-        handleButtonClick={onLogInClick}
-      />
+      {session?<Button
+        type="user"
+        handleButtonClick={onProfileClick}
+      />:<Button
+      name="LogIn"
+      type="LogIn"
+      handleButtonClick={onLogInClick}
+    />}
 
     </div>
-    <div className="main__body">
+    <div className="main">
       <div className="__left_sidebar"></div>
-      <div className="__main">
-
-      </div>
+      <div className="main__content"></div>
       <div className="__rigth_sidebar"></div>
     </div>
 
-    {modal && <Modal cancelModal={() => setModal(null)}>{modal}</Modal>}
+    {loginModal&&<Modal cancelModal={ () => setLogInModal(false)}><Login onUserLogIn={handleUserLogIn} /></Modal>}
   </div>
 }
 

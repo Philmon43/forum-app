@@ -2,11 +2,9 @@ import React from "react";
 import "./button.css";
 
 const Button = ({name, type, handleButtonClick}) => {
-    return <button className={type}
-                onClick={handleButtonClick}
-            >
+    return <button className={type}onClick={handleButtonClick}>
                 {name}
-            </button>
+           </button>
 }
 
 export default Button;

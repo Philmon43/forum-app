@@ -1,4 +1,5 @@
 .write{
+    position: relative;
     background: var(--primary);
     color: white;
     padding: 10px;
@@ -11,4 +12,44 @@
 
 .write:active{
     background: var(--primaryVarian);
+}
+
+.user{
+    border-radius: 100%;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    min-width: 40px;
+    min-height:40px;
+    background: var(--secondary);
+    background-image: url("../img/Sample_User_Icon.png");
+    background-position: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.spiner::after{
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 4px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
 }
