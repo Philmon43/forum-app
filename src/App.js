@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "./Components/Input";
 import Button from "./Components/Button";
 import Modal from "./Components/Modal/Modal";
@@ -8,6 +8,12 @@ import Login from "./Components/LogIn/Login";
 const App = () => {
   const [loginModal, setLogInModal ] = useState(false);
   const [session, setSession] = useState(JSON.parse(localStorage.getItem("user")) || null );
+
+  useEffect(() => {
+    if(localStorage.getItem("user")){
+      setSession(JSON.parse(localStorage.getItem("user")))
+    }
+  }, []);
 
   const onLogInClick = () => {
     setLogInModal(true)
