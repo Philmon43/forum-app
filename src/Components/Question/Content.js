@@ -34,7 +34,7 @@ const ContentCard = ({data}) => {
                             <div>{content.likes} likes</div>
                             <div>{content.dislikes} Dislikes</div>
                             <div>{content.comment.length} Comments</div>
-                            <div>{moment(content.createdAt).startOf('day').fromNow()}</div>
+                            <div>{moment(content.createdAt).startOf('hour').fromNow()}</div>
                         </div>
                     </div>
         })
@@ -44,7 +44,7 @@ const ContentCard = ({data}) => {
 const Content = ({data}) => {
     return (
         <div className="container">
-            {!data||data.length===0?[...Array(5)].map((e, i) => <Loader key={i} />):<ContentCard data={data}/>}
+            {!data||data.length===0?[...Array(6)].map((e, i) => <Loader key={i} />):<ContentCard data={data}/>}
         </div>
     )
 }

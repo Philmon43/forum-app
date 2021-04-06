@@ -21,7 +21,7 @@
 .q_body{
     display: flex;
     position: relative;
-    width: 90%;
+    width: 97%;
     margin: 0 auto;
 }
 .q_body > textarea{
@@ -32,6 +32,12 @@
     border-radius: 2.5px;
     resize: none;
     border-bottom: 2px solid var(--secondaryVarian);
+}
+.q_body > select{
+    outline: none;
+    border: none;
+    border-bottom: 2px solid var(--secondaryVarian);
+    border-right: 1px solid var(--secondary);
 }
 
 .q_button{

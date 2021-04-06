@@ -8,6 +8,7 @@ import QuestionApi from "./Api/QuestionApi";
 import Content from "./Components/Question/Content";
 
 
+
 const App = () => {
   const [loginModal, setLogInModal ] = useState(false);
   const [qustionModal, setQuestionModal ] = useState(false);
@@ -82,11 +83,11 @@ const App = () => {
 
     </div>
     <div className="main">
-      <div className="__left_sidebar"></div>
+      <div className="__left_sidebar">sdfghjkjhgfdsdfg</div>
       <div className="main__content">
           <Content data={data} />
       </div>
-      <div className="__rigth_sidebar"></div>
+      <div className="__rigth_sidebar">jhgfdfghjjhgfdsd</div>
     </div>
 
     {loginModal&&<Modal cancelModal={ () => setLogInModal(false)}><Login onUserLogIn={handleUserLogIn} /></Modal>}

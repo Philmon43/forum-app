@@ -5,6 +5,7 @@ import QuestionApi from "../../Api/QuestionApi";
 
 const Question  = ({onCancelQuestionModal}) => {
     const [val, setVal ] = useState("");
+    const [ option , setOption ] = useState("");
 
 
     const onPostNewQuestion = async () => {
@@ -16,7 +17,8 @@ const Question  = ({onCancelQuestionModal}) => {
             dislikes: 0,
             likes: 0,
             question: val,
-            createdAt: Date.now()
+            createdAt: Date.now(),
+            topic: option
           })
         onCancelQuestionModal()
     }
@@ -31,6 +33,14 @@ const Question  = ({onCancelQuestionModal}) => {
            </ul>
         </div>
         <div className="q_body">
+            <select value={option} onChange={e => setOption(e.target.value)}>
+                <option>select topic</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="javascript">JAVASCRIPT</option>
+                <option value="react">REACT</option>
+                <option value="nodejs">NODEJS</option>
+            </select>
             <textarea value={val} onChange={e => setVal(e.target.value)} placeholder='"Start your question with "What", "How", "Why", etc."'></textarea>
         </div>
         <div className="q_button">
