@@ -1,0 +1,39 @@
+.quesion{
+    width: 700px;
+    height: 400px;
+    border-radius: 5px;
+    background: var(--secondary);
+    color: var(--light);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    border: 1px solid var(--secondaryVarian);
+}
+
+.q_header{
+    width: 70%;
+    margin: 0 auto;
+    padding: 2.5px;
+    position: relative;
+    top: 10px;
+}
+
+.q_body{
+    display: flex;
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+}
+.q_body > textarea{
+    width: 100%;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    border-radius: 2.5px;
+    resize: none;
+    border-bottom: 2px solid var(--secondaryVarian);
+}
+
+.q_button{
+    text-align: right;
+}

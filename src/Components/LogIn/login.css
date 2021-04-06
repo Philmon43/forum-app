@@ -8,8 +8,3 @@
     height: 500px;
     border-radius: 5px;
 }
-.login__cancel{
-    position: relative;
-    bottom: 0;
-    right: 0;
-}

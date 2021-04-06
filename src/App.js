@@ -4,12 +4,24 @@ import Button from "./Components/Button";
 import Modal from "./Components/Modal/Modal";
 import Login from "./Components/LogIn/Login";
 import Question from "./Components/Question/Question";
+import QuestionApi from "./Api/QuestionApi";
+import Content from "./Components/Question/Content";
 
 
 const App = () => {
   const [loginModal, setLogInModal ] = useState(false);
   const [qustionModal, setQuestionModal ] = useState(false);
   const [session, setSession] = useState(JSON.parse(localStorage.getItem("user")) || null );
+  const [data, setData ] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await QuestionApi.get("/question");
+      setData(data)
+    }
+
+    fetchData()
+  }, [qustionModal]);
 
   useEffect(() => {
     if(localStorage.getItem("user")){
@@ -26,7 +38,9 @@ const App = () => {
   }
 
   const onNewQuestionClick = () => {
-    setQuestionModal(true)
+    if(session){
+      setQuestionModal(true)
+    }
   }
 
   const handleUserLogIn = () => {
@@ -69,12 +83,14 @@ const App = () => {
     </div>
     <div className="main">
       <div className="__left_sidebar"></div>
-      <div className="main__content"></div>
+      <div className="main__content">
+          <Content data={data} />
+      </div>
       <div className="__rigth_sidebar"></div>
     </div>
 
     {loginModal&&<Modal cancelModal={ () => setLogInModal(false)}><Login onUserLogIn={handleUserLogIn} /></Modal>}
-    {qustionModal&&<Modal cancelModal={ () => setQuestionModal(false)}><Question /></Modal>}
+    {qustionModal&&<Modal cancelModal={ () => setQuestionModal(false)}><Question onCancelQuestionModal={() => setQuestionModal(false)} /></Modal>}
   </div>
 }
 

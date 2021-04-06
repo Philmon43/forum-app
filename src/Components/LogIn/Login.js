@@ -59,7 +59,7 @@ const LogIn = ({onUserLogIn}) => {
             <Input data={(val) => setUserPassword(val)} name="input" placeholder="Enter your password"  tooltip="password: "/>
             <Button
                 name="LogIn" 
-                type="LogIn"
+                type="write"
                 handleButtonClick={authenticate}
                 />
             {error&&<p className="error">{error}</p>}
