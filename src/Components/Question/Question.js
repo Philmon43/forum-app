@@ -8,6 +8,7 @@ const Question  = ({onCancelQuestionModal}) => {
 
 
     const onPostNewQuestion = async () => {
+        // eslint-disable-next-line no-unused-vars
         const { data } = await QuestionApi.post("/question", {
             createdBy: JSON.parse(localStorage.getItem("user")).name,
             comment: [],
@@ -15,9 +16,9 @@ const Question  = ({onCancelQuestionModal}) => {
             dislikes: 0,
             likes: 0,
             question: val,
+            createdAt: Date.now()
           })
         onCancelQuestionModal()
-        console.log( data )
     }
 
     return <div className="quesion">

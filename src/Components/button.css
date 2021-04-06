@@ -21,7 +21,7 @@
     cursor: pointer;
     min-width: 40px;
     min-height:40px;
-    background: var(--secondary);
+    background: var(--secondaryVarian);
     background-image: url("../img/Sample_User_Icon.png");
     background-position: 0;
     background-repeat: no-repeat;

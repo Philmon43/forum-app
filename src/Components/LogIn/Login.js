@@ -33,10 +33,9 @@ const LogIn = ({onUserLogIn}) => {
             }else if(!isEmail(userEmail)){
                 // eslint-disable-next-line no-throw-literal
                 throw("Please check Your email");
-            }else if(userData){
-                const userMatch = userData.find(u => u.email === userEmail&& u.password === userPassword)
-                if(userMatch){
-                    localStorage.setItem("user", JSON.stringify(userMatch))
+            }else if(userData.filter(u => u.email === userEmail).length > 0){
+                if(userData.filter(u => u.email === userEmail&& u.password === userPassword).length > 0){
+                    localStorage.setItem("user", JSON.stringify(userData.filter(u => u.email === userEmail)))
                     onUserLogIn()
                 }else{
                     // eslint-disable-next-line no-throw-literal
@@ -47,6 +46,22 @@ const LogIn = ({onUserLogIn}) => {
                 localStorage.setItem("user", JSON.stringify(data))
                 onUserLogIn()
             }
+
+            //else if(userData){
+            //     const userMatch = userData.filter(u => u.email === userEmail&& u.password === userPassword)
+            //     console.log(userMatch)
+            //     if(!userMatch.length > 0){
+            //         localStorage.setItem("user", JSON.stringify(userMatch))
+            //         onUserLogIn()
+            //     }else{
+            //         // eslint-disable-next-line no-throw-literal
+            //         throw("User Exits please login with password");
+            //     }
+            // }else{
+            //     const {data} = await Axios.post("/users", user);
+            //     localStorage.setItem("user", JSON.stringify(data))
+            //     onUserLogIn()
+            // }
        }catch(e){
            setError(e)
        }
