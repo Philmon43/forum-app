@@ -39,4 +39,13 @@ html{
   .succuss{
     color: var(--secondary);
   }
+
+  .a_tag{
+    text-decoration: none;
+    color: black;
+  }
+
+  .a_tag:visited{
+    color: var(--secondaryVarian);
+  }
   

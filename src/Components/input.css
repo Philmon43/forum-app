@@ -1,7 +1,7 @@
 .search{
     width: 700px;
     outline: none;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--secondary);
     border-radius: 5px;
     text-align: right;
     padding: 5px;

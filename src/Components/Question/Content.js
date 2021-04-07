@@ -2,6 +2,7 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 import "./content.css";
 import moment from "moment";
+import { A } from "hookrouter";
 
 const Loader = () => {
     return (
@@ -26,22 +27,24 @@ const Loader = () => {
 const ContentCard = ({data}) => {
     return(
         data.sort((a, b) => b.createdAt - a.createdAt).map((content) => {
-            return <div className="content__container" key={content.id} onClick={() => console.log("rout to", content.id)}>
+            return <A key={content.id} className="a_tag" href={`/question/${content.id}`}>
+                    <div className="content__container">
                         <div className="user_icon"></div>
                         <div className="user_name"><span>asked by </span>{content.createdBy}</div>
                         <div className="card_body">{content.question}</div>
                         <div className="card_item">
-                            <div>{content.likes} likes</div>
-                            <div>{content.dislikes} Dislikes</div>
+                            <div>{content.likes.length} likes</div>
+                            <div>{content.dislikes.length} Dislikes</div>
                             <div>{content.comment.length} Comments</div>
                             <div>{moment(content.createdAt).startOf('hour').fromNow()}</div>
                         </div>
                     </div>
+                </A>
         })
     )
 }
 
-const Content = ({data}) => {
+const Content = ({ data }) => {
     return (
         <div className="container">
             {!data||data.length===0?[...Array(6)].map((e, i) => <Loader key={i} />):<ContentCard data={data}/>}

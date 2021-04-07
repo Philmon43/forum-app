@@ -17,7 +17,7 @@ const QuestionNotAnswered = () => {
     return (
         <div className="links_container">
             {questions && questions.map((q) => {
-                return <div key={q.id}><A href="/question/id">{q.question}</A></div>
+                return <div key={q.id}><A href={`question/${q.id}`}>{q.question}</A></div>
             })}
         </div>
     )

@@ -6,13 +6,12 @@ import Login from "./Components/LogIn/Login";
 import Question from "./Components/Question/Question";
 import QuestionApi from "./Api/QuestionApi";
 import Content from "./Components/Question/Content";
-import { useRoutes } from 'hookrouter';
+import { useRoutes, A } from 'hookrouter';
 import NotFound from "./pages/NotFound";
 import QuestionNotAnswered from "./pages/QuestionNotAnswered";
-import { useHistory } from 'react-router-dom';
+import PageById from "./pages/PageById";
 
 const App = () => {
-  const history = useHistory()
   const [loginModal, setLogInModal ] = useState(false);
   const [qustionModal, setQuestionModal ] = useState(false);
   const [session, setSession] = useState(JSON.parse(localStorage.getItem("user")) || null );
@@ -21,7 +20,8 @@ const App = () => {
 
   const routes = {
     '/': () => <Content data={data} />,
-    "/questions": () => <QuestionNotAnswered />
+    "/questions": () => <QuestionNotAnswered />,
+    "/question/:id": () => <PageById />,
   }
   const match = useRoutes(routes);
 
@@ -44,10 +44,6 @@ const App = () => {
     setLogInModal(true)
   }
 
-  const onAnswerBtnClick = () => {
-    // return push('/questions')
-  }
-
   const onNewQuestionClick = () => {
     if(session){
       setQuestionModal(true)
@@ -66,7 +62,9 @@ const App = () => {
 
   return <div>
     <div className="header">
-      <div className="title">Forum</div>
+      <A href="/" className="a_tag">
+        <div className="title">Forum</div>
+      </A>
 
       <Input data={val => val} name="search" placeholder="Search " tooltip=" 🔍 " />
       <div className="ask__ans">
@@ -75,12 +73,12 @@ const App = () => {
           type="write"
           handleButtonClick={onNewQuestionClick}
         />
-
-        <Button
-          name="Answer"
-          type="write"
-          handleButtonClick={onAnswerBtnClick}
-        />
+        <A href="/questions">
+          <Button
+            name="Answer"
+            type="write"
+          />
+        </A>
       </div>
 
       {session?<Button

@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from './App';
-import History from "./playground/history";
+import App from './App';
 
 ReactDOM.render(
-    <History />,
+    <App />,
   document.getElementById('root')
 );

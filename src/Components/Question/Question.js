@@ -13,9 +13,8 @@ const Question  = ({onCancelQuestionModal}) => {
         const { data } = await QuestionApi.post("/question", {
             createdBy: JSON.parse(localStorage.getItem("user")).name,
             comment: [],
-            poll: 0,
-            dislikes: 0,
-            likes: 0,
+            dislikes: [],
+            likes: [],
             question: val,
             createdAt: Date.now(),
             topic: option
