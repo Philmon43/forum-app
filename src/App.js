@@ -6,14 +6,24 @@ import Login from "./Components/LogIn/Login";
 import Question from "./Components/Question/Question";
 import QuestionApi from "./Api/QuestionApi";
 import Content from "./Components/Question/Content";
-
-
+import { useRoutes } from 'hookrouter';
+import NotFound from "./pages/NotFound";
+import QuestionNotAnswered from "./pages/QuestionNotAnswered";
+import { useHistory } from 'react-router-dom';
 
 const App = () => {
+  const history = useHistory()
   const [loginModal, setLogInModal ] = useState(false);
   const [qustionModal, setQuestionModal ] = useState(false);
   const [session, setSession] = useState(JSON.parse(localStorage.getItem("user")) || null );
-  const [data, setData ] = useState(null)
+  const [data, setData] = useState("");
+  
+
+  const routes = {
+    '/': () => <Content data={data} />,
+    "/questions": () => <QuestionNotAnswered />
+  }
+  const match = useRoutes(routes);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +45,7 @@ const App = () => {
   }
 
   const onAnswerBtnClick = () => {
-    console.log("asnwer btn clicked")
+    // return push('/questions')
   }
 
   const onNewQuestionClick = () => {
@@ -52,6 +62,7 @@ const App = () => {
   const onProfileClick = () => {
     console.log("user")
   }
+
 
   return <div>
     <div className="header">
@@ -83,11 +94,11 @@ const App = () => {
 
     </div>
     <div className="main">
-      <div className="__left_sidebar">sdfghjkjhgfdsdfg</div>
+      <div className="__left_sidebar"></div>
       <div className="main__content">
-          <Content data={data} />
+          {match || <NotFound />}
       </div>
-      <div className="__rigth_sidebar">jhgfdfghjjhgfdsd</div>
+      <div className="__rigth_sidebar"></div>
     </div>
 
     {loginModal&&<Modal cancelModal={ () => setLogInModal(false)}><Login onUserLogIn={handleUserLogIn} /></Modal>}
