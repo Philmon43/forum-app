@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./input.css";
 
-const Input = ({name, placeholder ,tooltip, data}) => {
+const Input = ({name, placeholder ,tooltip, data, inputType}) => {
     const [val, setVal ] = useState("");
     
     const handleChange = (e) => {
@@ -10,7 +10,7 @@ const Input = ({name, placeholder ,tooltip, data}) => {
     }
     return <form>
         <div className={name} data-tooltip={tooltip}>
-            <input  value={val} onChange= {handleChange} placeholder={placeholder} />
+            <input type={inputType}  value={val} onChange= {handleChange} placeholder={placeholder} />
         </div>
     </form>
 }

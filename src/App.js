@@ -10,6 +10,7 @@ import { useRoutes, A } from 'hookrouter';
 import NotFound from "./pages/NotFound";
 import QuestionNotAnswered from "./pages/QuestionNotAnswered";
 import PageById from "./pages/PageById";
+import PageLoading from "./Components/PageLoading";
 
 const App = () => {
   const [loginModal, setLogInModal ] = useState(false);
@@ -92,11 +93,15 @@ const App = () => {
 
     </div>
     <div className="main">
-      <div className="__left_sidebar"></div>
+      <div className="__left_sidebar">
+        <PageLoading />
+      </div>
       <div className="main__content">
           {match || <NotFound />}
       </div>
-      <div className="__rigth_sidebar"></div>
+      <div className="__rigth_sidebar">
+        <PageLoading />
+      </div>
     </div>
 
     {loginModal&&<Modal cancelModal={ () => setLogInModal(false)}><Login onUserLogIn={handleUserLogIn} /></Modal>}

@@ -71,7 +71,7 @@ const LogIn = ({onUserLogIn}) => {
             <h3>Log in</h3>
             <Input data={(val) => setUsername(val)} name="input" placeholder="Enter your name"  tooltip="Name: "/>
             <Input data={(val) => setUserEmail(val)} name="input" placeholder="Enter your email"  tooltip="Email: "/>
-            <Input data={(val) => setUserPassword(val)} name="input" placeholder="Enter your password"  tooltip="password: "/>
+            <Input inputType="password" data={(val) => setUserPassword(val)} name="input" placeholder="Enter your password"  tooltip="password: "/>
             <Button
                 name="LogIn" 
                 type="write"
