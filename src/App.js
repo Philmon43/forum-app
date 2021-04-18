@@ -10,7 +10,7 @@ import { useRoutes, A } from 'hookrouter';
 import NotFound from "./pages/NotFound";
 import QuestionNotAnswered from "./pages/QuestionNotAnswered";
 import PageById from "./pages/PageById";
-import PageLoading from "./Components/PageLoading";
+// import PageLoading from "./Components/PageLoading";
 
 const App = () => {
   const [loginModal, setLogInModal ] = useState(false);
@@ -69,11 +69,14 @@ const App = () => {
 
       <Input data={val => val} name="search" placeholder="Search " tooltip=" 🔍 " />
       <div className="ask__ans">
-        <Button
-          name="Ask"
-          type="write"
-          handleButtonClick={onNewQuestionClick}
-        />
+        <A href="/">
+          <Button
+            name="Ask"
+            type="write"
+            handleButtonClick={onNewQuestionClick}
+          />
+        </A>
+        
         <A href="/questions">
           <Button
             name="Answer"
@@ -94,13 +97,13 @@ const App = () => {
     </div>
     <div className="main">
       <div className="__left_sidebar">
-        <PageLoading />
+        {/* <PageLoading /> */}
       </div>
       <div className="main__content">
           {match || <NotFound />}
       </div>
       <div className="__rigth_sidebar">
-        <PageLoading />
+        {/* <PageLoading /> */}
       </div>
     </div>
 

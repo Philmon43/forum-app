@@ -47,7 +47,7 @@ const ContentCard = ({data}) => {
 const Content = ({ data }) => {
     return (
         <div className="container">
-            {!data||data.length===0?[...Array(6)].map((e, i) => <Loader key={i} />):<ContentCard data={data}/>}
+            {!data||data.length===0?[...Array(5)].map((e, i) => <Loader key={i} />):<ContentCard data={data}/>}
         </div>
     )
 }
